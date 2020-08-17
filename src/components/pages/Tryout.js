@@ -1,10 +1,8 @@
 import React from 'react'
-import Login from '../tryout/Login'
+import Main from '../tryout/Main'
 
 export default function Tryout() {
     return (
-        <div className="text-center">
-            <Login/>
-        </div>
+        <Main/>
     )
 }
