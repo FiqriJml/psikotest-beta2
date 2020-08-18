@@ -1,17 +1,16 @@
 import React from 'react'
 
-export default function ContohSoal({contoh}) {
+export default function SoalList({list}) {
     let no = 1
-    let index = 0
     return (
         <>
-            <h5 className="text-center">Perhatikan Petunjuk Pengerjaan Soal sebelum Memulai</h5>
+            <br/>
             <br/>
             <div className="border p-4">
-                <h5>Contoh</h5>
-                {contoh && contoh.map( item => {
+                <h5>Soal Psikotes</h5>
+                {list && list.map( soal => {
                     return(
-                        <ContohSoalBox noSoal={no++} key={index++} contohSoal={item}/>
+                        <SoalBox no={no++} key={no} soal={soal}/>
                     )
                 })}
             </div>
@@ -19,7 +18,7 @@ export default function ContohSoal({contoh}) {
     )
 }
 
-function ContohSoalBox({contohSoal, noSoal}) {
+function SoalBox({soal, no}) {
     let hrf = "a"
     let index = 1
     const nextChar = () => {
@@ -30,11 +29,11 @@ function ContohSoalBox({contohSoal, noSoal}) {
     return(
         <div className="soal-box">
             <div className="soal">
-                <span>0{noSoal}.</span>
-                <span>{contohSoal.soal}</span>
+                <span>0{no}.</span>
+                <span>{soal.soal}</span>
             </div>
             <div className="opsi-box">  
-                { contohSoal.opsi && contohSoal.opsi.map(opsi => (
+                { soal.opsi && soal.opsi.map(opsi => (
                     <div className="opsi" key={index++}>
                         <span>{nextChar(hrf)}.</span>{opsi}
                     </div>
