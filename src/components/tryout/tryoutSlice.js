@@ -19,6 +19,24 @@ export const fetchSoalperBab = createAsyncThunk(
         return response
 })
 
+// belum dicoba
+export const fetchSoalAll = createAsyncThunk(
+    'allSoal/fetched', async () => {
+        const dbSoal =  dbTests.doc(testId).collection("soal")
+        const response = await dbSoal.orderBy("no_bagian").get().then( querySnapshot => {
+            const data = []
+            querySnapshot.forEach(function(doc) {
+                data.push(doc.data())
+            })
+            return data
+        }).catch( error => {    
+            console.log("Error getting cached document:", error);
+        })
+        console.log(response)
+        return response
+    }
+)
+
 export const tryoutSlice = createSlice({
     name: "tryout",
     initialState,
@@ -28,6 +46,11 @@ export const tryoutSlice = createSlice({
         [fetchSoalperBab.fulfilled]: (state, action) => {
             state.status = "succeeded"
             state.data = action.payload
+        },
+        [fetchSoalAll.fulfilled]: (state, action) => {
+            state.status = "succeeded"
+            state.data = []
+            state.data = state.data.concat(action.payload)
         },
         
     }
