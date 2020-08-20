@@ -3,16 +3,32 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './app/store';
+import storeAdmin, { rrfProps } from './app/storeAdmin';
+import Admin from './components/pages/Admin';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <Switch>
+        <Route path="/administrator">      
+          <Provider store={storeAdmin}>
+            <ReactReduxFirebaseProvider  {...rrfProps}>
+              <Admin/>
+            </ReactReduxFirebaseProvider>
+          </Provider>  
+        </Route>
+
+
+        <Route path="/">      
+          <Provider store={store}>
+            <App/>
+          </Provider>  
+        </Route>
+      </Switch>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

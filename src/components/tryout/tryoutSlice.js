@@ -23,7 +23,7 @@ export const fetchSoalperBab = createAsyncThunk(
 export const fetchSoalAll = createAsyncThunk(
     'allSoal/fetched', async () => {
         const dbSoal =  dbTests.doc(testId).collection("soal")
-        const response = await dbSoal.orderBy("no_bagian").get().then( querySnapshot => {
+        const response = await dbSoal.orderBy("no_bab").get().then( querySnapshot => {
             const data = []
             querySnapshot.forEach(function(doc) {
                 data.push(doc.data())
