@@ -6,6 +6,8 @@ import { isLoaded, useFirestoreConnect, isEmpty } from 'react-redux-firebase'
 
 export const BabSoalList = ({match}) =>{
     const {testId} = match.params
+    const currUrl = `/administrator/tests/${testId}`
+
     // fungsinya untuk otomatis konek dengan firestore, setiap ada peruban akan respon
     useFirestoreConnect([
         {collection: 'tests', doc: testId, subcollections: [{collection: 'soal'}],  storeAs: "babsoal", orderBy: "no_bab"},
@@ -53,17 +55,20 @@ export const BabSoalList = ({match}) =>{
         // console.log(listBabsoal)
         content = listBabsoal.map(bab => (
             <tr key={bab.id}>
-                <td>{++no}</td>
-                <td>{bab.no}</td>
-                <td>{bab.tipe_soal}</td>
-                <td>{bab.bentuk_soal}</td>
+                <td>{bab.no_bab}</td>
                 <td>{hitungJumlah(bab.jml_soal)}</td>
                 <td>{hitungWaktu(bab.waktu_pengerjaan)}</td>
                 <td width="100px">
                     <div className="btn-group" role="group">
-                        <Link to={`${testId}/${bab.id}`} className="btn btn-sm btn-primary">view</Link>
-                        <Link to={`${testId}/bab/update/${bab.id}`} className="btn btn-sm btn-secondary">edit</Link>
-                        <button className="btn btn-danger btn-sm" onClick={onDelete} id={bab.id}>del</button>
+                        <Link className="btn btn-sm btn-success border" to={`${currUrl}/bab/${bab.id}`}>
+                            <i className="fa fa-eye" aria-hidden="true"></i>
+                        </Link>
+                        <Link className="btn btn-sm btn-success border" to={`${currUrl}/bab/edit/${bab.id}`}>
+                            <i className="fa fa-pencil" aria-hidden="true"></i>
+                        </Link>
+                        <button className="btn btn-sm btn-success border" onClick={onDelete} id={bab.id}> 
+                            <i className="fa fa-trash" aria-hidden="true"></i>
+                        </button>
                     </div>
                 </td>
             </tr>
@@ -77,13 +82,10 @@ export const BabSoalList = ({match}) =>{
             <table className="table table-bordered">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>bab</th>
-                        <th>Tipe Soal</th>
-                        <th>Bentuk Soal</th>
+                        <th>No Bab Soal</th>
                         <th>Jumlah Soal</th>
                         <th>Waktu Pengerjaan</th>
-                        <th>Action</th>
+                        <th>#</th>
                     </tr>
                 </thead>
                 <tbody>
