@@ -1,7 +1,7 @@
 import React from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {selectTestById, selectBabList} from './testAction'
+import {selectTestById, selectBabList} from '../testAction'
 import { isLoaded, useFirestoreConnect, isEmpty } from 'react-redux-firebase'
 
 export const BabSoalList = ({match}) =>{
@@ -14,7 +14,6 @@ export const BabSoalList = ({match}) =>{
         {collection: 'tests', }
     ]);
     
-    const dispatch = useDispatch()
     
     const test = useSelector(state => selectTestById(state, testId))
     const listBabsoal = useSelector(state => selectBabList(state))
@@ -29,7 +28,6 @@ export const BabSoalList = ({match}) =>{
         )
     }
     const onDelete = (e) => {
-        const babId = e.target.id
     }
     const hitungJumlah = (jml) => {
         // jml = 30

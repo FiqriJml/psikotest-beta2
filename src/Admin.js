@@ -3,7 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Admin.css';
 import { Switch, Route } from 'react-router-dom';
 import AdminTestList from './components/admin/AdminTestList';
-import Admin_BabSoalList from './components/admin/Admin_BabSoalList';
+import AdminBabSoalList from './components/admin/AdminBabSoalList';
+import AdminBabSoalDitail from './components/admin/AdminBabSoalDitail';
 function Admin() {
   return (
     <Switch>
@@ -13,10 +14,8 @@ function Admin() {
       <Route exact path="/administrator">  
         <AdminTestList/>    
       </Route>
-      <Route exact path="/administrator/tests/:testId" component={Admin_BabSoalList}></Route>
-      <Route path="/administrator/tests/:testId/bab/:babId">  
-        <p>something</p>
-      </Route>
+      <Route exact path="/administrator/tests/:testId" component={AdminBabSoalList}></Route>
+      <Route path="/administrator/tests/:testId/bab/:babId" component={AdminBabSoalDitail}></Route>
     </Switch>
   );
 }
