@@ -1,0 +1,51 @@
+.sidenav{
+    border: solid 1px rgb(236, 236, 236);
+    min-width: 250px;
+    min-height: 100vh;
+    justify-content: center;
+    text-align: center;
+}
+.sidenav-title{
+    border: solid 1px rgb(236, 236, 236);
+    padding: 1rem;
+    font-size: 18px;
+}
+.sidenav-nav{
+    padding: 10px;
+}
+.main{
+    display: flex;
+}
+.body{
+    width: 100%;
+    background-color: rgb(221, 221, 221);
+}
+.wrapper{
+    padding: 2rem;
+}
+.table-title{
+    background-color: #28a745;
+    color: white;
+    padding: 1rem;
+    padding-left: 3rem;
+    font-size: 18px;
+    font-weight: bold;
+    /* margin-bottom: 1rem; */
+}
+.navbar{
+    background-color: #28a745;
+    color: white;
+    border-bottom: solid 1px rgb(236, 236, 236);
+    border-top: solid 1px rgb(236, 236, 236);
+    border-right: solid 1px rgb(236, 236, 236);
+}
+.navbar a{
+    color: white;
+}
+.navbar a:hover{
+    color: thistle;
+}
+main{
+    padding: 3rem;
+    background-color: white;
+}

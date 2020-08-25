@@ -3,6 +3,7 @@ import ContohSoal from './ContohSoal'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchSoalAll } from './tryoutSlice'
 import SoalList from './SoalList'
+import { isEmpty } from 'react-redux-firebase'
 
 function Main() {
     const tryout = useSelector(state => state.tryout.data)
@@ -24,6 +25,10 @@ function Main() {
     }
     // mulai dari data soal pertama (index = 0)
     // ambil data list soal dan contoh
+    console.log(tryout)
+    if(isEmpty(tryout)){
+        return <p className="text-center">no data</p>
+    }
     const {list_contoh, list_soal} = tryout[babSoal]
     if(tryout.length === 1){
         setlastBab(true)

@@ -7,6 +7,7 @@ export const TestsList = () => {
     useFirestoreConnect({
         collection: 'tests'
     });
+    const pathTo = "/administrator/tests";
     const tests = useSelector(state => state.firestore.ordered.tests)
     const data = tests;
     
@@ -14,17 +15,27 @@ export const TestsList = () => {
         // const testId = e.target.id
     }
     if (!isLoaded(data)) return 'Loading...';
+    console.log(data)
     let content
     const renderTests = tests.map(test => (
             <tr key={test.id}>
                 <td>{test.name}</td>
                 <td>{test.author}</td>
-                <td width="100px">
-                    <div className="btn-group" role="group">
-                        <Link className="btn btn-secondary" to={`tests/${test.id}`}>View</Link>
-                        <Link className="btn btn-success" to={`tests/edit/${test.id}`}>Edit</Link>
-                        <button className="btn btn-danger" onClick={onDelete} id={test.id}>Del</button>
-                    </div>
+                <td></td>
+                <td></td>
+                <td style={{ 
+                    whiteSpace:"nowrap",
+                    width: "90px"
+                }}>
+                        <Link className="btn btn-sm btn-success border" to={`${pathTo}/${test.id}`}>
+                            <i className="fa fa-eye" aria-hidden="true"></i>
+                        </Link>
+                        <Link className="btn btn-sm btn-success border" to={`${pathTo}/edit/${test.id}`}>
+                            <i className="fa fa-pencil" aria-hidden="true"></i>
+                        </Link>
+                        <button className="btn btn-sm btn-success border" onClick={onDelete} id={test.id}> 
+                            <i className="fa fa-trash" aria-hidden="true"></i>
+                        </button>
                 </td>
             </tr>
         )
@@ -38,7 +49,9 @@ export const TestsList = () => {
                     <tr>
                         <th>Nama Test</th>
                         <th>Pengarang</th>
-                        <th>action</th>
+                        <th>Total Soal</th>
+                        <th>Total Halaman Soal</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

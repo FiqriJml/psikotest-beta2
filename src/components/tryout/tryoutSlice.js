@@ -49,8 +49,9 @@ export const tryoutSlice = createSlice({
         },
         [fetchSoalAll.fulfilled]: (state, action) => {
             state.status = "succeeded"
-            state.data = []
-            state.data = state.data.concat(action.payload)
+            // state.data = []
+            // state.data = state.data.concat(action.payload)
+            state.data = action.payload
         },
         
     }

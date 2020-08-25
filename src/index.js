@@ -7,8 +7,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './app/store';
 import storeAdmin, { rrfProps } from './app/storeAdmin';
-import Admin from './components/pages/Admin';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import Admin from '../src/Admin'
 
 ReactDOM.render(
   <React.StrictMode>

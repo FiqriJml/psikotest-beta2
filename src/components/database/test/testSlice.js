@@ -13,18 +13,7 @@ export const testSlice = createSlice({
     name: "tryout",
     initialState,
     reducers: {
-    },    
-    extraReducers: {
-        [fetchSoalperBab.fulfilled]: (state, action) => {
-            state.status = "succeeded"
-            state.data = action.payload
-        },
-        [fetchSoalAll.fulfilled]: (state, action) => {
-            state.status = "succeeded"
-            state.data = []
-            state.data = state.data.concat(action.payload)
-        },
-    }
+    },
 })
 
 export default testSlice.reducer
