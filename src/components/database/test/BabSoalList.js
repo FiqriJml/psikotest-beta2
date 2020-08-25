@@ -51,7 +51,6 @@ export const BabSoalList = ({match}) =>{
             <td colSpan="3">No Data</td>
         </tr>
     }else{
-        let no = 0
         // console.log(listBabsoal)
         content = listBabsoal.map(bab => (
             <tr key={bab.id}>
@@ -76,9 +75,11 @@ export const BabSoalList = ({match}) =>{
     }
     return (
         <div>
-            <h2>{test.name}</h2>
-            {/* <button onClick={addingbab} className="btn btn-secondary btn-sm">Add bab Soal</button> <br/> <br/> */}
-            <Link to={`/${testId}/bab/add`} className="btn btn-secondary btn-sm">Add bab</Link> <br/> <br/>
+            <h2>Soal {test.name}</h2>
+            <br/>
+            <Link to={`/${testId}/bab/add`} className="btn btn-success">
+                Tambah soal
+                </Link> <br/> <br/>
             <table className="table table-bordered">
                 <thead>
                     <tr>
