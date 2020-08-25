@@ -56,7 +56,7 @@ export const BabSoalList = ({match}) =>{
         content = listBabsoal.map(bab => (
             <tr key={bab.id}>
                 <td>{bab.no_bab}</td>
-                <td>{hitungJumlah(bab.jml_soal)}</td>
+                <td>{hitungJumlah(bab.list_soal.length)}</td>
                 <td>{hitungWaktu(bab.waktu_pengerjaan)}</td>
                 <td width="100px">
                     <div className="btn-group" role="group">
