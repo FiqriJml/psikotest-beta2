@@ -14,6 +14,8 @@ export default function AdminTemplate({content, title}) {
             </div>
             <div className="body"> 
                 <nav className="navbar navbar-expand-lg">
+                    <Link to="/administrator">Home</Link>&nbsp;
+                    /&nbsp;&nbsp;<Link to="/administrator/tests">Tests</Link>&nbsp;
                     <ul className="mx-auto"></ul>
                     <div>
                         <Link className="btn" to="#">
@@ -21,7 +23,6 @@ export default function AdminTemplate({content, title}) {
                         </Link>
                     </div>
                 </nav> 
-                <nav></nav>
                 <div className="wrapper"> 
                     <div className="table-title border">
                         {title}
