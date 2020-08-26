@@ -1,6 +1,6 @@
 import React from 'react'
 import AdminTemplate from '../pages/AdminTemplate'
-import BabSoalList from '../database/test/babsoal/BabSoalList'
+import BabSoalList from '../test/babsoal/BabSoalList'
 
 export default function AdminBabSoalList({match}) {
     return (
