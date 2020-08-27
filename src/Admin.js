@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import AdminTestList from './components/admin/AdminTestList';
 import AdminBabSoalList from './components/admin/AdminBabSoalList';
 import AdminBabSoalDitail from './components/admin/AdminBabSoalDitail';
+import AddBabSoal from './components/test/babsoal/AddBabSoal';
 function Admin() {
   return (
     <Switch>
@@ -15,7 +16,8 @@ function Admin() {
         <AdminTestList/>    
       </Route>
       <Route exact path="/administrator/tests/:testId" component={AdminBabSoalList}></Route>
-      <Route path="/administrator/tests/:testId/bab/:babId" component={AdminBabSoalDitail}></Route>
+      <Route exact path="/administrator/tests/:testId/bab/:babId" component={AdminBabSoalDitail}></Route>
+      <Route path="/administrator/tests/:testId/bab-add" component={AddBabSoal} ></Route>
     </Switch>
   );
 }

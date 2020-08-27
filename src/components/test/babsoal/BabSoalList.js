@@ -75,7 +75,7 @@ export const BabSoalList = ({match}) =>{
         <div>
             <h2>Soal {test.name}</h2>
             <br/>
-            <Link to={`/${testId}/bab/add`} className="btn btn-success">
+            <Link to={`${currUrl}/bab-add`} className="btn btn-success">
                 Tambah soal
                 </Link> <br/> <br/>
             <table className="table table-bordered">
