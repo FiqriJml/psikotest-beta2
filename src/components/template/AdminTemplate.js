@@ -25,7 +25,7 @@ export default function AdminTemplate({content, title, breadcrumbs}) {
                     }
                     <ul className="mx-auto"></ul>
                     <div>
-                        <Link className="btn" to="#">
+                        <Link className="btn" to="/">
                             <i className="fa fa-sign-out" aria-hidden="true"></i> Logout
                         </Link>
                     </div>

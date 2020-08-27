@@ -25,8 +25,6 @@ function BabSoalDitail({match}) {
     if(!isLoaded(test)){
         return <p>Loading...</p>
     }
-    // const soalList = babsoal.soalList
-    // const contohSoal = babsoal.contoh
 
     return (
         <div className="row mb-4 pb-4">
@@ -37,7 +35,7 @@ function BabSoalDitail({match}) {
                     <p>Waktu Pengerjaan (Durasi): {babsoal.waktu_pengerjaan} menit</p>
                 
                 <div className="btn-group" role="group">
-                    <Link to={`${babId}/add-soal/contoh`} className="btn btn-sm btn-secondary">Tambah contoh</Link>
+                    <Link to={`${babId}/add-contoh-soal`} className="btn btn-sm btn-secondary">Tambah contoh</Link>
                     <Link to={`${babId}/add-soal`} className="btn btn-sm btn-success">Tambah soal</Link>
                 </div>
                 <br/> <br/>

@@ -38,6 +38,26 @@ export const addsoal = createAsyncThunk(
     return response
   }
 )
+export const addContohsoal = createAsyncThunk(
+  'soal/added', async (props) => {
+    const {testId, babId, data} = props
+    const dbSoal = dbTests.doc(testId).collection(BABSOAL).doc(babId)
+    const list_contoh = (await dbSoal.get()).data().list_contoh
+
+    const nextSoal = list_contoh || []
+
+    nextSoal.push(data)
+
+    const response = await dbSoal.update({
+          list_contoh: nextSoal
+      }).then(() => {
+        console.log("Berhasil: ")
+      }).catch( err => {
+        console.log("Error add soal: ", err)
+      })
+    return response
+  }
+)
 
 export const selectTestList = state => state.firestore.ordered.tests
 export const selectBabList = state => state.firestore.ordered.babsoal
