@@ -35,7 +35,8 @@ function SoalBox({soal, no}) {
             <div className="opsi-box">  
                 { soal.opsi && soal.opsi.map(opsi => (
                     <div className="opsi" key={index++}>
-                        <span>{nextChar(hrf)}.</span>{opsi}
+                        <input type="radio" name={`opsi${no}`} id={`opsi${no}${index}`}/>
+                        <label htmlFor={`opsi${no}${index}`}><span>{nextChar(hrf)}.</span>{opsi}</label>
                     </div>
                 ))}
             </div>

@@ -4,6 +4,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Tryout from './components/pages/Tryout';
 import Login from './components/tryout/Login';
+import RadioButton from './components/custom/RadioButton';
 function App() {
   return (
     <div>
@@ -17,6 +18,7 @@ function App() {
           </div>
         </Route>
         <Route path="/tryout"> 
+        {/* <RadioButton/> */}
           <Tryout/>
         </Route>
       </Switch>

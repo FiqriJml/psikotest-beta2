@@ -18,8 +18,18 @@
 .opsi-box > .opsi {
     margin-right: 3rem;
 }
+.opsi-box > .opsi > input {
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
 .opsi-box span { 
     display: inline-block;
     width: 12px;
     margin-right: .4rem;
+}
+.opsi-box label { 
+    cursor: pointer;
+}
+.opsi-box label:hover, .opsi-box > .opsi > input:hover { 
+    color: rgb(115, 253, 207);
 }
