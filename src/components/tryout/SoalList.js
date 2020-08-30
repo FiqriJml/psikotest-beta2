@@ -1,6 +1,8 @@
 import React from 'react'
+import Soal1 from './tipeSoal/Soal1'
+import Soal3 from './tipeSoal/Soal3'
 
-export default function SoalList({list}) {
+export default function SoalList({list, tipe_soal}) {
     let no = 1
     return (
         <>
@@ -9,37 +11,19 @@ export default function SoalList({list}) {
             <div className="border p-4">
                 <h5>Soal Psikotes</h5>
                 {list && list.map( soal => {
-                    return(
-                        <SoalBox no={no++} key={no} soal={soal}/>
-                    )
+                    if(tipe_soal === 1 || tipe_soal === 2){
+                        return(
+                            <Soal1 no={no++} key={no} soal={soal}/>
+                        )
+                    }else if(tipe_soal === 3){
+                        return (
+                            <Soal3 no={no++} key={no} soal={soal}/>
+                        )
+                    }else{
+                        return <></>
+                    }
                 })}
             </div>
         </>
-    )
-}
-
-function SoalBox({soal, no}) {
-    let hrf = "a"
-    let index = 1
-    const nextChar = () => {
-        let n = hrf
-        hrf = String.fromCharCode(hrf.charCodeAt(0) + 1);
-        return n
-    }
-    return(
-        <div className="soal-box">
-            <div className="soal">
-                <span>0{no}.</span>
-                <span>{soal.soal}</span>
-            </div>
-            <div className="opsi-box">  
-                { soal.opsi && soal.opsi.map(opsi => (
-                    <div className="opsi" key={index++}>
-                        <input type="radio" name={`opsi${no}`} id={`opsi${no}${index}`}/>
-                        <label htmlFor={`opsi${no}${index}`}><span>{nextChar(hrf)}.</span>{opsi}</label>
-                    </div>
-                ))}
-            </div>
-        </div>
     )
 }

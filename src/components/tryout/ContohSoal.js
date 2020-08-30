@@ -1,6 +1,8 @@
 import React from 'react'
+import Contoh1 from './tipeSoal/Contoh1'
+import Contoh3 from './tipeSoal/Contoh3'
 
-export default function ContohSoal({contoh}) {
+export default function ContohSoal({contoh, tipe_soal}) {
     let no = 1
     let index = 0
     return (
@@ -9,37 +11,21 @@ export default function ContohSoal({contoh}) {
             <br/>
             <div className="border p-4">
                 <h5>Contoh</h5>
+                {/* menampilkan soal berdasarkan tipe_soal*/}
                 {contoh && contoh.map( item => {
-                    return(
-                        <ContohSoalBox noSoal={no++} key={index++} contohSoal={item}/>
-                    )
+                    if(tipe_soal === 1 || tipe_soal === 2){
+                        return(
+                            <Contoh1 noSoal={no++} key={index++} contohSoal={item}/>
+                        )
+                    }else if(tipe_soal === 3){
+                        return (
+                            <Contoh3 noSoal={no++} key={index++} contohSoal={item}/>
+                        )
+                    }else{
+                        return <></>
+                    }
                 })}
             </div>
         </>
-    )
-}
-
-function ContohSoalBox({contohSoal, noSoal}) {
-    let hrf = "a"
-    let index = 1
-    const nextChar = () => {
-        let n = hrf
-        hrf = String.fromCharCode(hrf.charCodeAt(0) + 1);
-        return n
-    }
-    return(
-        <div className="soal-box">
-            <div className="soal">
-                <span>0{noSoal}.</span>
-                <span>{contohSoal.soal}</span>
-            </div>
-            <div className="opsi-box">  
-                { contohSoal.opsi && contohSoal.opsi.map(opsi => (
-                    <div className="opsi" key={index++}>
-                        <span>{nextChar(hrf)}.</span>{opsi}
-                    </div>
-                ))}
-            </div>
-        </div>
     )
 }

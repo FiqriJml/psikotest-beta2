@@ -2,9 +2,8 @@ import React from 'react';
 import './App.css';
 import { Switch, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Tryout from './components/pages/Tryout';
 import Login from './components/tryout/Login';
-import RadioButton from './components/custom/RadioButton';
+import Tryout from './components/tryout/Tryout';
 function App() {
   return (
     <div>
@@ -17,10 +16,7 @@ function App() {
               <Login/>
           </div>
         </Route>
-        <Route path="/tryout"> 
-        {/* <RadioButton/> */}
-          <Tryout/>
-        </Route>
+        <Route path="/tryout/:page" component={Tryout} />
       </Switch>
     </div>
   );

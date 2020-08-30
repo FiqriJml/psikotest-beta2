@@ -1,8 +1,10 @@
 import React from 'react'
-import Main from '../tryout/Main'
+import Main from './Main'
 
 export default function Tryout() {
     return (
-        <Main/>
+        <div>
+            <Main/>
+        </div>
     )
 }

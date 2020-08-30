@@ -6,7 +6,7 @@ export default function Login() {
     const [name, setname] = useState('')
     const onSubmit = e => {
         e.preventDefault()
-        history.push('tryout')
+        history.push('tryout/first')
     }
     const onChange = e => {
         setname(e.target.value)

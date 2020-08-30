@@ -11,8 +11,8 @@ function Main() {
     const dispatch = useDispatch()
     
     const [content, setcontent] = useState('')
-    const [babSoal, setbabSoal] = useState(0)
-    const [lastSoal, setlastSoal] = useState(false)
+    const [bab, setbab] = useState(0)
+    const [contoh, setcontoh] = useState(true)
     const [lastBab, setlastBab] = useState(false)
 
     useEffect(() => {
@@ -23,50 +23,45 @@ function Main() {
     if(tryoutStatus === 'idle'){
         return <p className="text-center">Loading..</p>
     }
-    // mulai dari data soal pertama (index = 0)
-    // ambil data list soal dan contoh
-    console.log(tryout)
     if(isEmpty(tryout)){
         return <p className="text-center">no data</p>
     }
-    const {list_contoh, list_soal} = tryout[babSoal]
-    if(tryout.length === 1){
-        setlastBab(true)
+    if(bab >= tryout.length){
+        setbab(tryout.length - 1)
+        console.log(bab)
     }
+    const {list_contoh, list_soal, tipe_soal} = tryout[bab]
+
     if(!content){
-        setcontent(
-            <ContohSoal contoh={list_contoh}/>
-        )
-        setlastSoal(false)
+        setcontent(<ContohSoal contoh={list_contoh} tipe_soal={tipe_soal}/>)
+        setcontoh(true)
     }
-    const nextBtnClicked = () => {
-        if(!lastSoal){
-            setcontent(
-                <SoalList list={list_soal}/>
-            )
-            setlastSoal(true)
+    const gotoNextSoal = (e) => {
+        if(contoh){
+            setcontent( <SoalList list={list_soal} tipe_soal={tipe_soal}/> )
+            setcontoh(false) 
         }else{
-            if(!lastBab){  
-                nextBabSoal()
-            }else{
-                alert("Ini Soal Terakhir")
-            }
-        }
+            gotoNextBab()
+        }   
+        e.target.blur();
     }
-    const nextBabSoal = () => {
-        setcontent('')
-        setbabSoal(babSoal+1)
-        if(babSoal +2 === tryout.length){
+    const gotoNextBab = () =>{
+        if(bab >= tryout.length - 1){
+            setbab(tryout.length - 1)
             setlastBab(true)
+        }else{
+            setbab(bab+1)   
+            setcontent('')
         }
     }
-
-    let btnNav = <button onClick={nextBtnClicked} className="btn btn-primary">Selanjutnya</button>
-    if(lastBab && lastSoal){
-        btnNav = <button onClick={nextBtnClicked} className="btn btn-success">Akhiri</button>
+    const endOfSoal = (e) => {
+        alert("soal terakhir")
+    }
+    let btnNav = <button onClick={gotoNextSoal} className="btn btn-success">Selanjutnya</button>
+    if(lastBab){
+        btnNav = <button onClick={endOfSoal} className="btn btn-secondary">Finish</button>
     }
 
-    
     return (
         <div className="container laman-test">
             {content}
