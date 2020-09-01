@@ -1,5 +1,6 @@
 import React from 'react'
 import Contoh1 from './tipeSoal/Contoh1'
+import Contoh2 from './tipeSoal/Contoh2'
 import Contoh3 from './tipeSoal/Contoh3'
 
 export default function ContohSoal({contoh, tipe_soal}) {
@@ -13,9 +14,13 @@ export default function ContohSoal({contoh, tipe_soal}) {
                 <h5>Contoh</h5>
                 {/* menampilkan soal berdasarkan tipe_soal*/}
                 {contoh && contoh.map( item => {
-                    if(tipe_soal === 1 || tipe_soal === 2){
+                    if(tipe_soal === 1){
                         return(
                             <Contoh1 noSoal={no++} key={index++} contohSoal={item}/>
+                        )
+                    }else if(tipe_soal === 2){
+                        return (
+                            <Contoh2 noSoal={no++} key={index++} contohSoal={item}/>
                         )
                     }else if(tipe_soal === 3){
                         return (
