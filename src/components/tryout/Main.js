@@ -11,7 +11,7 @@ function Main({page}) {
     const dispatch = useDispatch()
     
     const [content, setcontent] = useState('')
-    const [bab, setbab] = useState(page)
+    const [bab, setbab] = useState(parseInt(page))
     const [contoh, setcontoh] = useState(true)
     const [lastBab, setlastBab] = useState(false)
 
