@@ -27,8 +27,9 @@ function BabSoalDitail({match}) {
     }
     let link_add = ''
     const tipe_soal = babsoal.tipe_soal
-    if(tipe_soal === "isian"){
-        link_add = tipe_soal + "/"
+    if(tipe_soal === 3 || tipe_soal === 4){
+        link_add = "isian/"
+        console.log(tipe_soal)
     }else{
         link_add = ''
     }

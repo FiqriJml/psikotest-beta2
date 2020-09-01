@@ -5,13 +5,13 @@ import { fetchSoalAll } from './tryoutSlice'
 import SoalList from './SoalList'
 import { isEmpty } from 'react-redux-firebase'
 
-function Main() {
+function Main({page}) {
     const tryout = useSelector(state => state.tryout.data)
     const tryoutStatus = useSelector(state => state.tryout.status)
     const dispatch = useDispatch()
     
     const [content, setcontent] = useState('')
-    const [bab, setbab] = useState(0)
+    const [bab, setbab] = useState(page)
     const [contoh, setcontoh] = useState(true)
     const [lastBab, setlastBab] = useState(false)
 

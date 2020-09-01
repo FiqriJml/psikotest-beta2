@@ -2,6 +2,7 @@ import React from 'react'
 import Soal1 from './tipeSoal/Soal1'
 import Soal2 from './tipeSoal/Soal2'
 import Soal3 from './tipeSoal/Soal3'
+import Soal4 from './tipeSoal/Soal4'
 
 export default function SoalList({list, tipe_soal}) {
     let no = 1
@@ -23,6 +24,10 @@ export default function SoalList({list, tipe_soal}) {
                     }else if(tipe_soal === 3){
                         return (
                             <Soal3 no={no++} key={no} soal={soal}/>
+                        )
+                    }else if(tipe_soal === 4){
+                        return (
+                            <Soal4 no={no++} key={no} soal={soal}/>
                         )
                     }else{
                         return <></>

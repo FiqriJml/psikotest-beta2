@@ -7,6 +7,7 @@ function AddBabSoal({match}) {
     const {testId} = match.params
     const data = {
         no_bab: '',
+        tipe_soal: '',
         waktu_pengerjaan: "",
         list_soal: [],
         list_contoh: []
