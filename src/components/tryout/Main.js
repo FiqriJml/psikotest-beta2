@@ -26,11 +26,14 @@ function Main({page}) {
     if(isEmpty(tryout)){
         return <p className="text-center">no data</p>
     }
+    let dataSoal
     if(bab >= tryout.length){
         setbab(tryout.length - 1)
-        console.log(bab)
+        dataSoal = tryout[tryout.length - 1]
+    }else{
+        dataSoal = tryout[bab]
     }
-    const {list_contoh, list_soal, tipe_soal} = tryout[bab]
+    const {list_contoh, list_soal, tipe_soal} = dataSoal
 
     if(!content){
         setcontent(<ContohSoal contoh={list_contoh} tipe_soal={tipe_soal}/>)
