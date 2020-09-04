@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-export default function Form({data, action, match}) {
+export default function Contoh3({data, action, match}) {
     const {testId, babId} = match.params
     const currUrl = `/administrator/tests/${testId}/bab/${babId}`
     const dispatch = useDispatch()

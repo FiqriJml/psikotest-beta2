@@ -25,14 +25,7 @@ function BabSoalDitail({match}) {
     if(!isLoaded(test)){
         return <p>Loading...</p>
     }
-    let link_add = ''
     const tipe_soal = babsoal.tipe_soal
-    if(tipe_soal === 3 || tipe_soal === 4){
-        link_add = "isian/"
-        console.log(tipe_soal)
-    }else{
-        link_add = ''
-    }
     return (
         <div className="row mb-4 pb-4">
             <div className="col-2">
@@ -43,8 +36,8 @@ function BabSoalDitail({match}) {
                     <p>Waktu Pengerjaan (Durasi): {babsoal.waktu_pengerjaan} menit</p>
                 
                 <div className="btn-group" role="group">
-                    <Link to={`${babId}/${link_add}add-contoh-soal`} className="btn btn-sm btn-secondary">Tambah contoh</Link>
-                    <Link to={`${babId}/${link_add}add-soal`} className="btn btn-sm btn-success">Tambah soal</Link>
+                    <Link to={`${babId}/add-contoh-soal/${tipe_soal}`} className="btn btn-sm btn-secondary">Tambah contoh</Link>
+                    <Link to={`${babId}/add-soal/${tipe_soal}`} className="btn btn-sm btn-success">Tambah soal</Link>
                 </div>
                 <br/> <br/>
                 <p><b>Contoh Soal:</b></p>

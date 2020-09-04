@@ -8,8 +8,6 @@ import AdminBabSoalDitail from './components/admin/AdminBabSoalDitail';
 import AddBabSoal from './components/test/babsoal/AddBabSoal';
 import AddSoal from './components/test/soal/AddSoal';
 import AddContohSoal from './components/test/soal/AddContohSoal';
-import AddSoalIsian from './components/test/soal/isian/AddSoalIsian';
-import AddContohSoalIsian from './components/test/soal/isian/AddContohSoalIsian';
 function Admin() {
   return (
     <Switch>
@@ -22,10 +20,8 @@ function Admin() {
       <Route exact path="/administrator/tests/:testId" component={AdminBabSoalList}></Route>
       <Route exact path="/administrator/tests/:testId/bab/:babId" component={AdminBabSoalDitail}></Route>
       <Route path="/administrator/tests/:testId/bab-add" component={AddBabSoal} ></Route>
-      <Route exact path="/administrator/tests/:testId/bab/:babId/add-soal" component={AddSoal}></Route>
-      <Route exact path="/administrator/tests/:testId/bab/:babId/add-contoh-soal" component={AddContohSoal}></Route>
-      <Route exact path="/administrator/tests/:testId/bab/:babId/isian/add-soal" component={AddSoalIsian}></Route>
-      <Route exact path="/administrator/tests/:testId/bab/:babId/isian/add-contoh-soal" component={AddContohSoalIsian}></Route>
+      <Route exact path="/administrator/tests/:testId/bab/:babId/add-soal/:tipe_soal" component={AddSoal}></Route>
+      <Route exact path="/administrator/tests/:testId/bab/:babId/add-contoh-soal/:tipe_soal" component={AddContohSoal}></Route>
     </Switch>
   );
 }
