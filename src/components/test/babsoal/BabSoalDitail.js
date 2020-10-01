@@ -41,10 +41,10 @@ function BabSoalDitail({match}) {
                 </div>
                 <br/> <br/>
                 <p><b>Contoh Soal:</b></p>
-                <ContohList contoh={babsoal.list_contoh}/>
+                <ContohList contoh={babsoal.list_contoh} opsi_contoh_src={babsoal.opsi_contoh_src}/>
                 <br/> 
                 <p><b>List Soal:</b></p>
-                <SoalList list={babsoal.list_soal}/>
+                <SoalList list={babsoal.list_soal} tipe_soal={tipe_soal}/>
             </div>
             <div className="col-2">
             </div>

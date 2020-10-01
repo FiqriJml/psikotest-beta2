@@ -45,6 +45,7 @@ export default function Form({data, action, match}) {
                     <option value="2">Pilihan Ganda (tanpa soal)</option>
                     <option value="3">Isian (Text)</option>
                     <option value="4">Isian (Number)</option>
+                    <option value="5">Pilihan Ganda (Gambar 1)</option>
                 </select>
                 
                 <label htmlFor="waktu">Waktu Pengerjaan</label>

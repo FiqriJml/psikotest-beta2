@@ -1,17 +1,39 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function ContohList({contoh}) {
+export default function ContohList({contoh, opsi_contoh_src}) {
     let no = 1
     let index = 0
+    let list_contoh = ''
+    let opsi_gambar = ''
+    if(opsi_contoh_src){
+        opsi_gambar = <> <img style={{maxHeight: 200}} className="img-fluid" alt="gambar contoh opsi" src={opsi_contoh_src} height="200"/>
+        <br/><br/> </>
+        list_contoh = contoh && contoh.map( item => {
+            return(
+                <ContohSoalGambar key={index++} noSoal={no++} contohSoal={item} />
+            )
+        })
+    }else{
+        list_contoh = contoh && contoh.map( item => {
+            return(
+                <ContohSoalBox noSoal={no++} key={index++} contohSoal={item}/>
+            )
+        })
+    }
     return (
         <div className="border p-4">
-            {contoh && contoh.map( item => {
-                return(
-                    <ContohSoalBox noSoal={no++} key={index++} contohSoal={item}/>
-                )
-            })}
+            {opsi_gambar}
+            {list_contoh}
         </div>
+    )
+}
+
+function ContohSoalGambar({contohSoal, noSoal}){
+    return(
+        <p>
+            {noSoal}. <img style={{maxHeight: 150}} alt="..." src={contohSoal.imgPath}/>
+        </p>
     )
 }
 

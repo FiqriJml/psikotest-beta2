@@ -1,19 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function SoalList({list}) {
-    let no = 1
+export default function SoalList({list, tipe_soal}) {
+    const list_soal = list && list.map( (soal, no) => {
+        if(tipe_soal === 5){
+            return(
+                <SoalGambar key={no} no={no+1} opsi={soal}/>
+            )
+        }else{  
+            return(
+                <SoalBox key={no} no={no+1} soal={soal}/>
+            )
+        }
+    })
     return (
         <div className="border p-4">
-            {list && list.map( soal => {
-                return(
-                    <SoalBox no={no++} key={no} soal={soal}/>
-                )
-            })}
+            {list_soal}
         </div>
     )
 }
-
+function SoalGambar({opsi}){
+    return(<>
+        <p><img style={{maxHeight: 150}} className="img-fluid" alt="opsi soal" src={opsi.imgOpsiPath} height="150"/></p>
+        <div className="pl-4 pr-4 mb-3">
+            { opsi.soalGroup.map((soal, no) => (
+                <p key={no}>{no+1}. <img style={{maxHeight: 80}} alt="..." src={soal.imgSoalPath}/></p>
+            ))}
+        </div>
+    </>)
+}
 function SoalBox({soal, no}) {
     let hrf = "a"
     let index = 1

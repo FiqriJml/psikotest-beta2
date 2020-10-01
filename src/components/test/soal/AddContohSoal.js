@@ -2,7 +2,8 @@ import React from 'react'
 import Contoh1 from './form/ContohForm'
 import Contoh3 from './form/Contoh3'
 import AdminTemplate from '../../template/AdminTemplate'
-import { addContohsoal } from '../testAction'
+import { addContohsoal, addContohwithImage } from '../testAction'
+import Contoh5 from './form/Contoh5'
 
 function AddContohSoal({match}) {
     const {testId, babId, tipe_soal} = match.params
@@ -18,6 +19,11 @@ function AddContohSoal({match}) {
             soal: "",
         }
         form = <Contoh3 data={data} action={addContohsoal} match={match}/>
+    }else if(parseInt(tipe_soal) === 5){
+        const data = {
+            soal: "",
+        }
+        form = <Contoh5 data={data} action={addContohwithImage} match={match}/>
     }
     else{
         form = <p className="alert alert-danger">Tipe Soal Not Found</p>

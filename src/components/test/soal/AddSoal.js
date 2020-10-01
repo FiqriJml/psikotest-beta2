@@ -1,6 +1,7 @@
 import React from 'react'
 import Soal1 from './form/Form'
 import Soal3 from './form/Soal3'
+import Soal5 from './form/Soal5'
 import AdminTemplate from '../../template/AdminTemplate'
 import { addsoal } from '../testAction'
 
@@ -20,6 +21,11 @@ function AddSoal({match}) {
             soal: "",
         }
         form = <Soal3 data={data} action={addsoal} match={match}/>
+    }else if(parseInt(tipe_soal) === 5){
+        const data = {
+            soal: "",
+        }
+        form = <Soal5 data={data} match={match}/>
     }
     else{
         form = <p className="alert alert-danger">Tipe Soal Not Found</p>
