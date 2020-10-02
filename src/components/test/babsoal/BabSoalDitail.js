@@ -41,7 +41,7 @@ function BabSoalDitail({match}) {
                 </div>
                 <br/> <br/>
                 <p><b>Contoh Soal:</b></p>
-                <ContohList contoh={babsoal.list_contoh} opsi_contoh_src={babsoal.opsi_contoh_src}/>
+                <ContohList list={babsoal.list_contoh} tipe_soal={tipe_soal}/>
                 <br/> 
                 <p><b>List Soal:</b></p>
                 <SoalList list={babsoal.list_soal} tipe_soal={tipe_soal}/>
