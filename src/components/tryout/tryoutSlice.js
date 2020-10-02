@@ -15,7 +15,6 @@ export const fetchSoalperBab = createAsyncThunk(
     'soalperbab/fetched', async () => {
         const dbSoal =  dbTests.doc(testId).collection("soal")
         const response =  (await dbSoal.doc(babSoalId).get()).data()
-        console.log(response)
         return response
 })
 
@@ -32,7 +31,6 @@ export const fetchSoalAll = createAsyncThunk(
         }).catch( error => {    
             console.log("Error getting cached document:", error);
         })
-        console.log(response)
         return response
     }
 )

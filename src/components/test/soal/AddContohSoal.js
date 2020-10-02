@@ -2,7 +2,7 @@ import React from 'react'
 import Contoh1 from './form/ContohForm'
 import Contoh3 from './form/Contoh3'
 import AdminTemplate from '../../template/AdminTemplate'
-import { addContohsoal, addContohwithImage } from '../testAction'
+import { addContohsoal } from '../testAction'
 import Contoh5 from './form/Contoh5'
 
 function AddContohSoal({match}) {
@@ -23,7 +23,7 @@ function AddContohSoal({match}) {
         const data = {
             soal: "",
         }
-        form = <Contoh5 data={data} action={addContohwithImage} match={match}/>
+        form = <Contoh5 data={data} match={match}/>
     }
     else{
         form = <p className="alert alert-danger">Tipe Soal Not Found</p>

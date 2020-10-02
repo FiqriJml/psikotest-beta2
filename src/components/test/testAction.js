@@ -74,31 +74,6 @@ export const getDownloadURL = async (imageName) => {
   const response = await storage.ref(imageName).getDownloadURL()
   return response
 }
-export const addContohwithImage = createAsyncThunk(
-  'contoh-soal-image/added', async (props) => {
-    const {testId, babId, imageAsFile, ket} = props
-    const dbSoal = dbTests.doc(testId).collection(BABSOAL).doc(babId)
-    const path = `/${testId}/${babId}/contoh`
-    if(ket === "opsi"){
-      const imageName = `/${path}/opsi`
-      const uploadTask = storage.ref(imageName).put(imageAsFile)
-      uploadTask.on('state_changed', (err) => console.log(err))
-      const opsi_contoh_src = await storage.ref(imageName).getDownloadURL()
-      .then(
-       fireBaseUrl => {return fireBaseUrl}
-      )
-      dbSoal.update({ opsi_contoh_src }).catch( err => {
-        console.log("Error save src opsi image contoh soal: ", err)
-      })
-    }else{
-      console.log("bukan opsi")
-      const imageName = `/${path}/coba`
-      const uploadTask = storage.ref(imageName).put(imageAsFile)
-      console.log(uploadTask)
-      return uploadTask
-    }
-  }
-)
 export const addContohsoal = createAsyncThunk(
   'contoh-soal/added', async (props) => {
     const {testId, babId, data} = props
@@ -111,6 +86,25 @@ export const addContohsoal = createAsyncThunk(
 
     const response = await dbSoal.update({
           list_contoh: nextSoal
+      }).then(() => {
+        console.log("Berhasil: ")
+      }).catch( err => {
+        console.log("Error add soal: ", err)
+      })
+    return response
+  }
+)
+export const addContohSoalGroup = createAsyncThunk(
+  'soalGroup/added', async (props) => {
+    const {testId, babId, data, index} = props
+    const dbSoal = dbTests.doc(testId).collection(BABSOAL).doc(babId)
+    let list_contoh = (await dbSoal.get()).data().list_contoh
+    const soalGroup = list_contoh[index].soalGroup || []
+    soalGroup.push(data)
+    list_contoh[index].soalGroup = soalGroup
+
+    const response = await dbSoal.update({
+          list_contoh
       }).then(() => {
         console.log("Berhasil: ")
       }).catch( err => {
