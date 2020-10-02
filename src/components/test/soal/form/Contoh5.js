@@ -45,7 +45,7 @@ export default function Contoh5({match}) {
         }
         setuploading(true)
         const groupNo = babsoal.list_contoh.length + 1
-        const imagePath = `/${testId}/${babId}/soal/${groupNo}/group`
+        const imagePath = `/${testId}/${babId}/contoh/${groupNo}/group`
         const task = uploadImageTo({imagePath, imageAsFile})
         task.on('state_changed', (snapShot) => {
             let persen = parseInt((snapShot.bytesTransferred / snapShot.totalBytes) * 100)
@@ -93,7 +93,7 @@ export default function Contoh5({match}) {
         }
         const groupNo = indexSoal + 1
         const noSoal = babsoal.list_contoh[indexSoal].soalGroup.length + 1
-        const imagePath = `/${testId}/${babId}/soal/${groupNo}/${noSoal}`
+        const imagePath = `/${testId}/${babId}/contoh/${groupNo}/${noSoal}`
         
         const task = uploadImageTo({imagePath, imageAsFile})
         setuploading(true)
