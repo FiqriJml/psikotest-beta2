@@ -34,7 +34,7 @@ export default function ContohSoal({contoh, tipe_soal}) {
                         )
                     }else if(tipe_soal === 5){
                         return (
-                            <Contoh5 noSoal={no++} key={index++} contohSoal={item}/>
+                            <Contoh5 key={index++} contohSoal={item}/>
                         )
                     }else{
                         return <></>

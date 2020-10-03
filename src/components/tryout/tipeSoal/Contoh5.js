@@ -1,18 +1,16 @@
 import React from 'react'
 
-export default function Contoh5({contohSoal, noSoal}) {
-    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-    const listItems = numbers.map((number) =>
-        <span key={number}>&nbsp;&nbsp; {number} &nbsp;&nbsp;</span>
-    );
-    console.log(contohSoal)
+export default function Contoh5({contohSoal}) {
     return(
         <div className="soal-box">
-            <div className="soal">
-                <span>0{noSoal}.</span>
-                <span>{contohSoal.soal}</span>
-            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>0{noSoal}.&nbsp;&nbsp;{listItems}</span>
+            <p><img style={{maxHeight: 120}} className="img-fluid" alt="opsi soal" src={contohSoal.imgOpsiPath} /></p>
+            <div className="pl-4 pr-4 mb-3">
+                { contohSoal.soalGroup.map((soal, no) => (
+                    <span key={no} className="mr-4">
+                        {no+1}. <img style={{maxHeight: 80}} alt="..." src={soal.imgSoalPath}/>
+                    </span>
+                ))}
+            </div>
         </div>
     )
 }
