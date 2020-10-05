@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
+import ButtonNavigasi from './ButtonNavigasi'
 import Soal1 from './tipeSoal/Soal1'
 import Soal2 from './tipeSoal/Soal2'
 import Soal3 from './tipeSoal/Soal3'
 import Soal4 from './tipeSoal/Soal4'
 import Soal5 from './tipeSoal/Soal5'
 
-export default function SoalList({list, tipe_soal}) {
+export default function SoalList({list, tipe_soal, next_page, label}) {
     const [answer, setanswer] = useState(new Array(list.length))
     // const [jawaban, setjawaban] = useState({})
     // const test_record = [
@@ -49,6 +50,7 @@ export default function SoalList({list, tipe_soal}) {
                 {/* contoh aja tombol ni */}
                 <button>Tombol{answer}</button>
             </div>
+            <ButtonNavigasi next_page={next_page} label={label}/>
         </>
     )
 }
