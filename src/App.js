@@ -16,7 +16,7 @@ function App() {
               <Login/>
           </div>
         </Route>
-        <Route path="/tryout/:page" component={Tryout} />
+        <Route path="/tryout/:page/:label" component={Tryout} />
       </Switch>
     </div>
   );

@@ -1,70 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 import ContohSoal from './ContohSoal'
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchSoalAll } from './tryoutSlice'
 import SoalList from './SoalList'
-import { isEmpty } from 'react-redux-firebase'
 
-function Main({page}) {
-    const tryout = useSelector(state => state.tryout.data)
-    const tryoutStatus = useSelector(state => state.tryout.status)
-    const dispatch = useDispatch()
+function Main({data_soal, label, next_page}) {
+    const {list_contoh, list_soal, tipe_soal} = data_soal
+    let content, btnNav
+
+    // content
+    if(label === "contoh"){
+        label = "soal"
+        content = <ContohSoal contoh={list_contoh} tipe_soal={tipe_soal}/>
+    }else if(label === "soal"){
+        label = "contoh"
+        content = <SoalList list={list_soal} tipe_soal={tipe_soal}/>
+    }
     
-    const [content, setcontent] = useState('')
-    const [bab, setbab] = useState(parseInt(page))
-    const [contoh, setcontoh] = useState(true)
-    const [lastBab, setlastBab] = useState(false)
-
-    useEffect(() => {
-        if(tryoutStatus === 'idle'){
-            dispatch(fetchSoalAll())
-        }
-    }, [tryoutStatus, dispatch])
-    if(tryoutStatus === 'idle'){
-        return <p className="text-center">Loading..</p>
-    }
-    if(isEmpty(tryout)){
-        return <p className="text-center">no data</p>
-    }
-    let dataSoal
-    if(bab >= tryout.length){
-        setbab(tryout.length - 1)
-        dataSoal = tryout[tryout.length - 1]
-    }else{
-        dataSoal = tryout[bab]
-    }
-    const {list_contoh, list_soal, tipe_soal} = dataSoal
-
-    if(!content){
-        setcontent(<ContohSoal contoh={list_contoh} tipe_soal={tipe_soal}/>)
-        setcontoh(true)
-    }
-    const gotoNextSoal = (e) => {
-        if(contoh){
-            setcontent( <SoalList list={list_soal} tipe_soal={tipe_soal}/> )
-            setcontoh(false) 
+    // btnNav
+    const history = useHistory()
+    const gotoNextSoal = () =>{
+        if(next_page){
+            history.push(`/tryout/${next_page}/${label}`)
         }else{
-            gotoNextBab()
-        }   
-        e.target.blur();
-    }
-    const gotoNextBab = () =>{
-        if(bab >= tryout.length - 1){
-            setbab(tryout.length - 1)
-            setlastBab(true)
-        }else{
-            setbab(bab+1)   
-            setcontent('')
+            alert("Soal habis")
         }
     }
-    const endOfSoal = (e) => {
-        alert("soal terakhir")
-    }
-    let btnNav = <button onClick={gotoNextSoal} className="btn btn-success">Selanjutnya</button>
-    if(lastBab){
-        btnNav = <button onClick={endOfSoal} className="btn btn-secondary">Finish</button>
+    btnNav = <button className="btn btn-success" onClick={gotoNextSoal}>Selanjutnya</button>
+    if(!next_page){
+        btnNav = <button className="btn btn-secondary" onClick={gotoNextSoal}>Selesai</button>
     }
 
+    // isi
     return (
         <div className="container laman-test">
             {content}
