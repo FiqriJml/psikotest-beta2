@@ -18,7 +18,7 @@ export const fetchSoalperBab = createAsyncThunk(
         return response
 })
 
-// belum dicoba
+
 export const fetchSoalAll = createAsyncThunk(
     'allSoal/fetched', async () => {
         const dbSoal =  dbTests.doc(testId).collection("soal")

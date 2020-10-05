@@ -6,19 +6,23 @@ import SoalList from './SoalList'
 function Main({data_soal, label, next_page}) {
     const {list_contoh, list_soal, tipe_soal} = data_soal
     let content, btnNav
-
     // content
+    const onSubmit = (data) => {
+
+    }
     if(label === "contoh"){
         label = "soal"
         content = <ContohSoal contoh={list_contoh} tipe_soal={tipe_soal}/>
     }else if(label === "soal"){
         label = "contoh"
-        content = <SoalList list={list_soal} tipe_soal={tipe_soal}/>
+        content = <SoalList list={list_soal} tipe_soal={tipe_soal} onSubmit={onSubmit}/>
     }
     
     // btnNav
     const history = useHistory()
     const gotoNextSoal = () =>{
+        // simpan jawaban di db
+        // dispatch()
         if(next_page){
             history.push(`/tryout/${next_page}/${label}`)
         }else{
