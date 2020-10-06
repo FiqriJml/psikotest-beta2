@@ -33,7 +33,7 @@ export default function Tryout({match}) {
     }
     return (
         <div>
-            <Main data_soal={data_soal} label={label} next_page={next_page} />
+            <Main data_soal={data_soal} label={label} next_page={next_page} page={page}  />
         </div>
     )
 }

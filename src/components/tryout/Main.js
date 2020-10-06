@@ -2,7 +2,7 @@ import React from 'react'
 import ContohSoal from './ContohSoal'
 import SoalList from './SoalList'
 
-function Main({data_soal, label, next_page}) {
+function Main({data_soal, label, next_page, page}) {
     const {list_contoh, list_soal, tipe_soal} = data_soal
     let content
     if(label === "contoh"){
@@ -10,7 +10,7 @@ function Main({data_soal, label, next_page}) {
         content = <ContohSoal contoh={list_contoh} tipe_soal={tipe_soal} next_page={next_page} label={label}/>
     }else if(label === "soal"){
         label = "contoh"
-        content = <SoalList list={list_soal} tipe_soal={tipe_soal} next_page={next_page} label={label} />
+        content = <SoalList page={page} list={list_soal} no_bab={data_soal.no_bab} tipe_soal={tipe_soal} next_page={next_page} label={label} />
     }
     // isi
     return (

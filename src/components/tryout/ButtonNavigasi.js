@@ -2,11 +2,11 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 
 function ButtonNavigasi(props) {
-    const {next_page, label} = props
+    const {next_page, label, onSubmit} = props
     const history = useHistory()
     const gotoNextSoal = () =>{
         // simpan jawaban di db
-        // dispatch()
+        if(onSubmit){ onSubmit() }
         if(next_page){
             history.push(`/tryout/${next_page}/${label}`)
         }else{

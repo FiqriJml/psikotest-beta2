@@ -17,7 +17,28 @@ export const fetchSoalperBab = createAsyncThunk(
         const response =  (await dbSoal.doc(babSoalId).get()).data()
         return response
 })
-
+const tryoutID = "vV2FOEzsdj0pkDug5K7b"
+const dbTryout = db.collection('tryout')
+const participantId = "q0v12t4VFw6osdp1RjIL"
+export const saveAnswerPerBab = createAsyncThunk(
+    'answer/submitted', async ({answer, no_bab}) => {
+        const dbAnswer =  dbTryout.doc(tryoutID).collection("participant").doc(participantId)
+        const test_record =  (await dbAnswer.get()).data().test_record || []
+        const data = {
+            answer, no_bab
+        }
+        test_record.push(data)
+        const response = await dbAnswer.update({
+            test_record
+        }).then(() => {
+            console.log("Berhasil: ")
+        }).catch( err => {
+            console.log("Error add bab soal: ", err)
+        })
+        console.log(response)
+        return response
+    }
+)
 
 export const fetchSoalAll = createAsyncThunk(
     'allSoal/fetched', async () => {

@@ -1,8 +1,13 @@
 import React from 'react'
 
-export default function Soal5({soal}) {
+export default function Soal5(props) {
+    const {soal, setAnswer, answer} = props
     
-    console.log(soal)
+    // console.log(soal)    
+    const onChange = (e, no) => {
+        answer[no] = parseInt(e.target.value)
+        setAnswer(answer)
+    }
     return(
         <div className="soal-box">
             <p><img style={{maxHeight: 120}} className="img-fluid" alt="opsi soal" src={soal.imgOpsiPath} /></p>
@@ -11,7 +16,7 @@ export default function Soal5({soal}) {
                     <span key={no} className="mr-4">
                         {no+1}. <img style={{maxHeight: 80}} alt="..." src={soal.imgSoalPath}/>
                         &nbsp;&nbsp;&nbsp;
-                        <select>
+                        <select onChange={(e) => onChange(e, no)}>
                             <option value="0">a</option>
                             <option value="1">b</option>
                             <option value="2">c</option>
